@@ -1,0 +1,300 @@
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-sans); color: var(--color-text-primary); background: transparent; }
+  .section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 99px; background: #EEEDFE; color: #3C3489; margin-bottom: 1rem; letter-spacing: 0.04em; }
+  .btn-primary { display: inline-block; padding: 14px 32px; border-radius: 99px; background: #2C1A6B; color: #fff; font-size: 15px; font-weight: 500; cursor: pointer; border: none; transition: background 0.2s; text-decoration: none; }
+  .btn-primary:hover { background: #3C3489; }
+  .btn-outline { display: inline-block; padding: 13px 30px; border-radius: 99px; background: transparent; color: var(--color-text-primary); font-size: 15px; font-weight: 500; cursor: pointer; border: 1.5px solid var(--color-border-primary); transition: background 0.2s; text-decoration: none; }
+  .btn-outline:hover { background: var(--color-background-secondary); }
+  h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 500; line-height: 1.15; }
+  h2 { font-size: 2rem; font-weight: 500; line-height: 1.3; }
+  h3 { font-size: 1.1rem; font-weight: 500; }
+  p { font-size: 16px; line-height: 1.7; color: var(--color-text-secondary); }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); position: sticky; top: 0; background: var(--color-background-primary); z-index: 100; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 17px; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--color-text-secondary); font-size: 14px; }
+  .nav-links a:hover { color: var(--color-text-primary); }
+  .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding: 6rem 2.5rem 5rem; max-width: 1100px; margin: 0 auto; }
+  .hero-btns { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+  .hero-badge { display: flex; align-items: center; gap: 8px; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: 99px; padding: 6px 16px 6px 8px; font-size: 13px; margin-bottom: 1.5rem; width: fit-content; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #639922; }
+  .robot-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+  .robot-card { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-xl); padding: 2.5rem; width: 100%; aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; }
+  .stat-pills { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+  .pill { padding: 6px 16px; border-radius: 99px; font-size: 13px; font-weight: 500; }
+  .pill-purple { background: #EEEDFE; color: #3C3489; }
+  .pill-teal { background: #E1F5EE; color: #0F6E56; }
+  .pill-amber { background: #FAEEDA; color: #633806; }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .feat-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.75rem; }
+  .feat-icon { width: 44px; height: 44px; border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+  .icon-purple { background: #EEEDFE; }
+  .icon-teal { background: #E1F5EE; }
+  .icon-amber { background: #FAEEDA; }
+  .icon-blue { background: #E6F1FB; }
+  .icon-coral { background: #FAECE7; }
+  .icon-green { background: #EAF3DE; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .price-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 2rem; }
+  .price-card.featured { border: 2px solid #7F77DD; }
+  .price-tag { font-size: 2.5rem; font-weight: 500; margin: 1rem 0 0.25rem; color: var(--color-text-primary); }
+  .price-sub { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 1.5rem; }
+  .feat-list { list-style: none; margin: 1.5rem 0; display: flex; flex-direction: column; gap: 10px; }
+  .feat-list li { font-size: 14px; color: var(--color-text-secondary); display: flex; align-items: center; gap: 8px; }
+  .check { width: 16px; height: 16px; border-radius: 50%; background: #E1F5EE; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .cta-section { background: #2C1A6B; border-radius: 24px; padding: 5rem 3rem; text-align: center; margin: 0 2rem 5rem; }
+  .cta-section h2 { color: #fff; font-size: 2.4rem; }
+  .cta-section p { color: rgba(255,255,255,0.7); margin: 1rem auto; max-width: 520px; }
+  .cta-btns { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
+  .btn-white { display: inline-block; padding: 14px 32px; border-radius: 99px; background: #fff; color: #2C1A6B; font-size: 15px; font-weight: 500; cursor: pointer; border: none; text-decoration: none; }
+  .btn-ghost { display: inline-block; padding: 13px 30px; border-radius: 99px; background: transparent; color: #fff; font-size: 15px; font-weight: 500; cursor: pointer; border: 1.5px solid rgba(255,255,255,0.4); text-decoration: none; }
+  .section-header { text-align: center; max-width: 600px; margin: 0 auto; }
+  .section-header p { margin-top: 1rem; }
+  footer { border-top: 0.5px solid var(--color-border-tertiary); padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; }
+  footer p { font-size: 13px; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { text-decoration: none; color: var(--color-text-secondary); font-size: 13px; }
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 2rem; }
+    .features-grid, .pricing-grid { grid-template-columns: 1fr; }
+    .robot-visual { display: none; }
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .cta-section { padding: 3rem 1.5rem; margin: 0 1rem 3rem; }
+    .section { padding: 3.5rem 1.25rem; }
+  }
+</style>
+
+<nav>
+  <div class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <rect width="28" height="28" rx="7" fill="#2C1A6B"/>
+      <circle cx="14" cy="11" r="5" fill="#AFA9EC"/>
+      <rect x="9" y="18" width="10" height="6" rx="3" fill="#7F77DD"/>
+      <circle cx="11" cy="11" r="1.2" fill="#2C1A6B"/>
+      <circle cx="17" cy="11" r="1.2" fill="#2C1A6B"/>
+    </svg>
+    Yellowstone Robotics
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Features</a></li>
+    <li><a href="#">How it works</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#">Support</a></li>
+  </ul>
+  <a href="#" class="btn-primary" style="padding: 10px 22px; font-size: 14px;">Pre-order Covo</a>
+</nav>
+
+<div class="hero">
+  <div>
+    <div class="hero-badge">
+      <div class="dot"></div>
+      Now shipping in the US & Canada
+    </div>
+    <span class="tag">Meet your home companion</span>
+    <h1>The robot that <em style="font-style: italic; color: #534AB7;">learns</em> your life.</h1>
+    <p style="margin-top: 1.25rem; font-size: 17px; max-width: 480px;">Covo is a personal home robot that listens to your voice, carries what you need, and quietly learns your daily routines — so home just works.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-primary">Pre-order — $1,799</a>
+      <a href="#" class="btn-outline">Watch the demo</a>
+    </div>
+    <p style="margin-top: 1.5rem; font-size: 13px;">Free shipping &nbsp;·&nbsp; 60-day returns &nbsp;·&nbsp; 2-year warranty</p>
+  </div>
+
+  <div class="robot-visual">
+    <div class="robot-card">
+      <svg width="140" height="160" viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="30" width="60" height="60" rx="20" fill="#AFA9EC"/>
+        <circle cx="58" cy="52" r="7" fill="#534AB7"/>
+        <circle cx="82" cy="52" r="7" fill="#534AB7"/>
+        <circle cx="58" cy="52" r="3" fill="#fff"/>
+        <circle cx="82" cy="52" r="3" fill="#fff"/>
+        <rect x="58" y="70" width="24" height="6" rx="3" fill="#7F77DD"/>
+        <rect x="35" y="50" width="10" height="20" rx="5" fill="#CECBF6"/>
+        <rect x="95" y="50" width="10" height="20" rx="5" fill="#CECBF6"/>
+        <rect x="45" y="94" width="50" height="45" rx="12" fill="#7F77DD"/>
+        <rect x="55" y="105" width="30" height="22" rx="6" fill="#AFA9EC" opacity="0.5"/>
+        <ellipse cx="56" cy="142" rx="8" ry="6" fill="#534AB7"/>
+        <ellipse cx="84" cy="142" rx="8" ry="6" fill="#534AB7"/>
+        <circle cx="115" cy="35" r="12" fill="#E1F5EE"/>
+        <text x="109" y="40" font-size="13" fill="#0F6E56">♪</text>
+        <circle cx="25" cy="65" r="10" fill="#FAEEDA"/>
+        <text x="20" y="70" font-size="11" fill="#633806">!</text>
+      </svg>
+      <div class="stat-pills">
+        <span class="pill pill-purple">Voice activated</span>
+        <span class="pill pill-teal">Learns routines</span>
+        <span class="pill pill-amber">Carries up to 5kg</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="border-top: 0.5px solid var(--color-border-tertiary); border-bottom: 0.5px solid var(--color-border-tertiary); padding: 1.5rem 2.5rem;">
+  <div style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap;">
+    <p style="font-size: 14px; color: var(--color-text-secondary); font-weight: 500;">Trusted by early adopters across 48 states</p>
+    <span style="font-size: 14px; font-weight: 500; color: var(--color-text-secondary);">★★★★★ &nbsp;4.9 / 5 &nbsp;·&nbsp; 2,400+ reviews</span>
+    <span style="font-size: 14px; color: var(--color-text-secondary);">Featured in <strong style="color: var(--color-text-primary);">TechCrunch · WIRED · TIME</strong></span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <span class="tag">What Covo can do</span>
+    <h2>Built around your everyday life</h2>
+    <p>From morning coffee to late-night snack runs, Covo handles the small stuff so you can focus on what matters.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon icon-purple">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="5" stroke="#534AB7" stroke-width="1.5"/><path d="M4 19c0-3.866 3.134-7 7-7h0c3.866 0 7 3.134 7 7" stroke="#534AB7" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Voice commands</h3>
+      <p style="margin-top: 0.5rem; font-size: 14px;">Talk naturally. Covo understands full sentences — "bring me my glasses from the bedroom" just works, no app required.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon icon-teal">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="3" stroke="#0F6E56" stroke-width="1.5"/><path d="M7 11h8M7 7.5h8M7 14.5h5" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Routine learning</h3>
+      <p style="margin-top: 0.5rem; font-size: 14px;">Covo observes and remembers. After a week, it anticipates — having your morning items ready before you even ask.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon icon-amber">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 11h12M5 11l4-4M5 11l4 4" stroke="#854F0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Carry & deliver</h3>
+      <p style="margin-top: 0.5rem; font-size: 14px;">With a 5kg payload and stable tray design, Covo hauls groceries, laundry, snacks, and more room to room.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon icon-blue">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#185FA5" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Smart scheduling</h3>
+      <p style="margin-top: 0.5rem; font-size: 14px;">Syncs with your calendar. Covo reminds you of meetings, medication times, or whenever the laundry is done.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon icon-coral">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3C7 3 4 6 4 10c0 5 7 9 7 9s7-4 7-9c0-4-3-7-7-7z" stroke="#993C1D" stroke-width="1.5"/><circle cx="11" cy="10" r="2" fill="#993C1D"/></svg>
+      </div>
+      <h3>Home mapping</h3>
+      <p style="margin-top: 0.5rem; font-size: 14px;">SLAM navigation technology maps your home in minutes. Covo avoids pets, kids, and furniture without missing a beat.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon icon-green">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 4v14M4 11h14" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Expandable modules</h3>
+      <p style="margin-top: 0.5rem; font-size: 14px;">Clip on the air quality sensor, mini speaker, or charging pad. Covo grows with your needs over time.</p>
+    </div>
+  </div>
+</div>
+
+<div style="background: var(--color-background-secondary); padding: 1px 0;">
+<div class="section">
+  <div class="section-header">
+    <span class="tag">Pricing</span>
+    <h2>Simple, one-time pricing</h2>
+    <p>No subscriptions. No hidden fees. Pay once and Covo is yours — for life.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <p style="font-size: 13px; font-weight: 500; color: var(--color-text-secondary);">COVO STARTER</p>
+      <div class="price-tag">$1,299</div>
+      <p class="price-sub">One-time payment</p>
+      <ul class="feat-list">
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Voice command system</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>5kg carry capacity</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Basic home mapping</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>12-hour battery</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>1-year warranty</li>
+      </ul>
+      <a href="#" class="btn-outline" style="width: 100%; text-align: center; display: block; margin-top: auto;">Order Starter</a>
+    </div>
+    <div class="price-card featured">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <p style="font-size: 13px; font-weight: 500; color: #534AB7;">COVO PRO</p>
+        <span style="background: #EEEDFE; color: #3C3489; font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 99px;">Most popular</span>
+      </div>
+      <div class="price-tag">$1,799</div>
+      <p class="price-sub">One-time payment</p>
+      <ul class="feat-list">
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Everything in Starter</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Routine learning AI</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Advanced SLAM navigation</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Calendar & app sync</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>18-hour battery</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Module expansion support</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>2-year warranty</li>
+      </ul>
+      <a href="#" class="btn-primary" style="width: 100%; text-align: center; display: block;">Order Covo Pro</a>
+    </div>
+    <div class="price-card">
+      <p style="font-size: 13px; font-weight: 500; color: var(--color-text-secondary);">COVO FAMILY</p>
+      <div class="price-tag">$2,499</div>
+      <p class="price-sub">One-time · up to 5 users</p>
+      <ul class="feat-list">
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Everything in Pro</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>5 individual voice profiles</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Multi-floor mapping</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Priority customer support</li>
+        <li><span class="check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="#0F6E56" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>3-year warranty</li>
+      </ul>
+      <a href="#" class="btn-outline" style="width: 100%; text-align: center; display: block; margin-top: auto;">Order Family</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<div style="max-width: 1100px; margin: 5rem auto; padding: 0 2rem;">
+  <div class="section-header" style="margin-bottom: 3rem;">
+    <span class="tag">What people are saying</span>
+    <h2>Real homes. Real routines. Real joy.</h2>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.5rem;">
+      <p style="font-size: 22px; color: #534AB7; margin-bottom: 0.75rem;">★★★★★</p>
+      <p style="font-size: 14px; line-height: 1.7;">"Covo figured out my morning routine within three days. It now has my coffee things ready before I even wake up. Genuinely magical."</p>
+      <p style="font-size: 13px; margin-top: 1rem; font-weight: 500; color: var(--color-text-secondary);">— Sarah M., Portland OR</p>
+    </div>
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.5rem;">
+      <p style="font-size: 22px; color: #534AB7; margin-bottom: 0.75rem;">★★★★★</p>
+      <p style="font-size: 14px; line-height: 1.7;">"As someone with mobility issues, Covo has been life-changing. I can ask it to fetch things from across the house and it just does it."</p>
+      <p style="font-size: 13px; margin-top: 1rem; font-weight: 500; color: var(--color-text-secondary);">— David K., Austin TX</p>
+    </div>
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.5rem;">
+      <p style="font-size: 22px; color: #534AB7; margin-bottom: 0.75rem;">★★★★★</p>
+      <p style="font-size: 14px; line-height: 1.7;">"Our whole family uses it. Each person has their own voice profile and Covo switches between us seamlessly. The kids love it."</p>
+      <p style="font-size: 13px; margin-top: 1rem; font-weight: 500; color: var(--color-text-secondary);">— The Nguyen family, Seattle WA</p>
+    </div>
+  </div>
+</div>
+
+<div style="max-width: 1060px; margin: 0 auto 2rem;">
+  <div class="cta-section">
+    <span style="display: inline-block; background: rgba(255,255,255,0.15); color: #fff; font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 99px; margin-bottom: 1.5rem; letter-spacing: 0.04em;">Limited pre-orders open</span>
+    <h2>Your home is ready for Covo.</h2>
+    <p>Join 12,000+ households who pre-ordered. Ships Q3 2025. Free setup guide included.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-white">Pre-order now — $1,799</a>
+      <a href="#" class="btn-ghost">Learn more</a>
+    </div>
+    <p style="color: rgba(255,255,255,0.5); font-size: 13px; margin-top: 1.5rem;">60-day risk-free returns &nbsp;·&nbsp; Cancel anytime before ship date</p>
+  </div>
+</div>
+
+<footer>
+  <div class="nav-logo" style="font-size: 14px;">
+    <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="7" fill="#2C1A6B"/><circle cx="14" cy="11" r="5" fill="#AFA9EC"/><rect x="9" y="18" width="10" height="6" rx="3" fill="#7F77DD"/><circle cx="11" cy="11" r="1.2" fill="#2C1A6B"/><circle cx="17" cy="11" r="1.2" fill="#2C1A6B"/></svg>
+    Yellowstone Robotics
+  </div>
+  <p style="font-size: 13px;">© 2025 Yellowstone Robotics Inc. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
